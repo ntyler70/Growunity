@@ -16,9 +16,9 @@ scope = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive"
 ]
-creds = Credentials.from_service_account_file(JSON_KEYFILE, scopes=scope)
+service_account_info = st.secrets["gcp_service_account"]
+creds = Credentials.from_service_account_info(service_account_info)
 client = gspread.authorize(creds)
-sheet = client.open(SHEET_NAME).sheet1
 
 # ------------------------------
 # Load Data
